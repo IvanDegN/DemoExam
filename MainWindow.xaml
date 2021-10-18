@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp5"
         mc:Ignorable="d"
-        Title="Попрыженок" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="Images/Попрыженок.ico">
+        Title="Попрыженок" Height="450" Width="1000" WindowStartupLocation="CenterScreen" Icon="Images/Попрыженок.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>

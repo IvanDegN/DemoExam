@@ -30,7 +30,8 @@
                   CanUserAddRows="False"
                   CanUserResizeColumns="False"
                   CanUserDeleteRows="False"
-                  CanUserReorderColumns="False">
+                  CanUserReorderColumns="False"
+                  CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="1*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -48,9 +49,9 @@
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
-
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{Binding Logo}" Grid.RowSpan="5" Grid.ColumnSpan="1"></Image>
+                                
+                                <Image Source="{Binding NullImage}" Grid.RowSpan="5" Grid.ColumnSpan="1"></Image>
                                 <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
                                     <TextBlock Text="{Binding AgentType}"></TextBlock>
                                     <TextBlock Text=" | "></TextBlock>

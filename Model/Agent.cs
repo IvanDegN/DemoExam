@@ -12,5 +12,17 @@ namespace WpfApp5
         {
             return Title;
         }
+
+        public string NullImage
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Logo) || string.IsNullOrWhiteSpace(Logo))
+                {
+                    return @"\Images\picture.png";
+                }
+                else return Logo;
+            }
+        }
     }
 }

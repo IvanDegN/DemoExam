@@ -23,6 +23,8 @@ namespace WpfApp5
         public MainWindow()
         {
             InitializeComponent();
+            this.MinWidth = 900;
+            this.MinHeight = 300;
         }
 
         private void BtnGoBack_Click(object sender, RoutedEventArgs e)
