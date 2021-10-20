@@ -19,7 +19,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox Name="FindAgentTb" TextChanged="FindAgentTb_TextChanged" GotFocus="FindAgentTb_GotFocus" LostFocus="FindAgentTb_LostFocus" VerticalContentAlignment="Center"></TextBox>
+        <TextBox Name="FindAgentTb" TextChanged="FindAgentTb_TextChanged"  LostFocus="FindAgentTb_LostFocus" VerticalContentAlignment="Center"></TextBox>
         <TextBox Name="FindAgentTbPlaceHolder" GotFocus="FindAgentTbPlaceHolder_GotFocus" Text="Введите для поиска" VerticalContentAlignment="Center"></TextBox>
         <ComboBox Grid.Column="1" Name="SortCb" SelectionChanged="SortCb_SelectionChanged" SelectedIndex="0"></ComboBox>
         <ComboBox Grid.Column="2"  Name="FilterCb" SelectionChanged="FilterCb_SelectionChanged" SelectedIndex="0"></ComboBox>

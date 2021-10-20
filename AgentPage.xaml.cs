@@ -36,8 +36,30 @@ namespace WpfApp5
 
 
         }
-        
-        
+        /// <summary>
+        /// Реализация поиска и фильтрации.
+        /// </summary>
+        private void FindAgent()
+        {
+            List<Agent> agent = DB.Entities.Agent.Where(x => x.Title.StartsWith(FindAgentTb.Text)).ToList();
+
+            switch (SortCb.SelectedIndex)
+            {
+                
+                case 0:; break;
+                case 1: agent = agent.OrderBy(x => x.Title).ToList(); break;
+                case 2: agent = agent.OrderByDescending(x => x.Title).ToList(); break;
+            }
+
+            if (FilterCb.SelectedIndex > 0)
+            {
+                string angentTp = FilterCb.SelectedItem.ToString();
+                agent = agent.Where(x => x.AgentType.Title == angentTp).ToList();
+            }
+
+            GridAgents.ItemsSource = agent;
+
+        }
 
         
         /// <summary>
@@ -47,7 +69,7 @@ namespace WpfApp5
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            GridAgents.ItemsSource = DB.Entities.Agent.ToList();
+            FindAgent();
         }
         /// <summary>
         /// Сортировка данных по алфавиту и в обратную сторону.
@@ -56,14 +78,8 @@ namespace WpfApp5
         /// <param name="e"></param>
         private void SortCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            switch(SortCb.SelectedIndex)
-            {
-                default: GridAgents.ItemsSource = DB.Entities.Agent.ToList(); break;
-                case 0: GridAgents.ItemsSource = DB.Entities.Agent.ToList(); break;
-                case 1: GridAgents.ItemsSource = DB.Entities.Agent.OrderBy(x => x.Title).ToList(); break;
-                case 2: GridAgents.ItemsSource = DB.Entities.Agent.OrderByDescending(x => x.Title).ToList(); break;
-            }
+
+            FindAgent();
         }
         /// <summary>
         /// Сортировка агентов по типу.
@@ -72,17 +88,7 @@ namespace WpfApp5
         /// <param name="e"></param>
         private void FilterCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch(FilterCb.SelectedIndex)
-            {
-                default: GridAgents.ItemsSource = DB.Entities.Agent.ToList(); break;
-                case 0: GridAgents.ItemsSource = DB.Entities.Agent.ToList(); break;
-                case 1: GridAgents.ItemsSource = DB.Entities.Agent.Where(x => x.AgentType.Title == "МКК").ToList(); break;
-                case 2: GridAgents.ItemsSource = DB.Entities.Agent.Where(x => x.AgentType.Title == "ОАО").ToList(); break;
-                case 3: GridAgents.ItemsSource = DB.Entities.Agent.Where(x => x.AgentType.Title == "ООО").ToList(); break;
-                case 4: GridAgents.ItemsSource = DB.Entities.Agent.Where(x => x.AgentType.Title == "ЗАО").ToList(); break;
-                case 5: GridAgents.ItemsSource = DB.Entities.Agent.Where(x => x.AgentType.Title == "МФО").ToList(); break;
-                case 6: GridAgents.ItemsSource = DB.Entities.Agent.Where(x => x.AgentType.Title == "ПАО").ToList(); break;
-            }
+            FindAgent();
         }
         /// <summary>
         /// Поиск по названию агента.
@@ -91,14 +97,10 @@ namespace WpfApp5
         /// <param name="e"></param>
         private void FindAgentTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            GridAgents.ItemsSource = DB.Entities.Agent.Where(x => x.Title.StartsWith(FindAgentTb.Text)).ToList();
-            
+            FindAgent();
         }
 
-        private void FindAgentTb_GotFocus(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        
         /// <summary>
         /// Если по полю для ввода не было нажатия, то вместо пустоты там будет заглушка в виде текста.
         /// </summary>
